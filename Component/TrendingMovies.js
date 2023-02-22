@@ -1,10 +1,17 @@
-import { View, Text, FlatList, ActivityIndicator, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { GET } from "../service/API";
 import { IMAGE_POSTER_URL, POSTER_IMAGE } from "../src/config";
 import Constant from "../src/Constant";
 
-const TrendingMovies = () => {
+const TrendingMovies = (props) => {
   const [Movies, setDiscoverMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -16,18 +23,24 @@ const TrendingMovies = () => {
     };
     getMovies();
   }, []);
-  const displayMovies = ({ item }) => {
-    console.log(IMAGE_POSTER_URL, item.poster_path);
+  const displayMovies = ({ item }, props) => {
+    //console.log(IMAGE_POSTER_URL, item.poster_path);
     return (
-      <View className="m-2">
-        <Image
-          source={{ uri: `${POSTER_IMAGE}${item.poster_path}` }}
-          className="h-[200] w-[100] rounded-sm"
-        />
-        <Text className="w-[90] text-xs text-center mt-2 text-white ">
-          {item.original_title}
-        </Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate("movieDetails", { movieId: item.id });
+        }}
+      >
+        <View className="m-2">
+          <Image
+            source={{ uri: `${POSTER_IMAGE}${item.poster_path}` }}
+            className="h-[200] w-[100] rounded-sm"
+          />
+          <Text className="w-[90] text-xs text-center mt-2 text-white ">
+            {item.original_title}
+          </Text>
+        </View>
+      </TouchableOpacity>
     );
   };
   return (
@@ -39,9 +52,10 @@ const TrendingMovies = () => {
           <Text className="text-[19] text-[#969696] m-1">Trending Movies</Text>
           <FlatList
             data={Movies}
-            renderItem={displayMovies}
+            renderItem={(item) => displayMovies(item, props)}
             keyExtractor={(item) => item.id}
             horizontal
+            onPres
           />
         </View>
       )}

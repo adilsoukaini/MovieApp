@@ -4,12 +4,12 @@ import DiscoverMovies from "../Component/DiscoverMovies";
 import TrendingPeople from "../Component/TrendingPeople";
 import TrendingMovies from "../Component/TrendingMovies";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <View className="bg-[#151C26] h-full">
       <DiscoverMovies />
       <TrendingPeople />
-      <TrendingMovies />
+      <TrendingMovies navigation={props.navigation} />
     </View>
   );
 };

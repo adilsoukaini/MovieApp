@@ -6,6 +6,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./src/Home";
 import Constant from "./src/Constant";
 import { FontAwesome } from "@expo/vector-icons";
+import MovieDetails from "./src/movieDetails";
+import movieDetails from "./src/movieDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +16,11 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
         <Stack.Screen name="Movie" component={Home} options={HeaderStyle} />
+        <Stack.Screen
+          name="movieDetails"
+          component={MovieDetails}
+          options={HeaderStyle}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
