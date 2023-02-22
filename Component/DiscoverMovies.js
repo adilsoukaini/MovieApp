@@ -31,7 +31,7 @@ const DiscoverMovies = () => {
 
       setImages(backImages);
     };
-    console.log("images", images);
+    //console.log("images", images);
 
     getMovies();
   }, []);

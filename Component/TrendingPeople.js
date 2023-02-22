@@ -20,14 +20,14 @@ const TrendingPeople = () => {
     getPeople();
   }, []);
   const displayPeople = ({ item }) => {
-    console.log(IMAGE_POSTER_URL, item.profile_path);
+    //console.log(IMAGE_POSTER_URL, item.profile_path);
     return (
-      <View className="mt-2  ">
+      <View className="mt-2">
         <Image
           source={{ uri: `${IMAGE_POSTER_URL}${item.profile_path}` }}
-          className="h-[50] w-[50] rounded-full  "
+          className="h-[50] w-[50] rounded-full   "
         />
-        <Text className="w-[60] text-xs text-center mt-2 text-white ">{item.name}</Text>
+        <Text className="w-[60] text-xs  mt-2 text-white ">{item.name}</Text>
       </View>
     );
   };
@@ -38,7 +38,7 @@ const TrendingPeople = () => {
         <ActivityIndicator size="large" color={Constant.Text} />
       ) : (
         <View>
-          <Text className= "text-white">Trending People</Text>
+          <Text className="text-[19] text-[#969696] m-1">Trending People</Text>
           <FlatList
             data={people}
             renderItem={displayPeople}
