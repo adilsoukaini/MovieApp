@@ -44,7 +44,7 @@ const DiscoverMovies = () => {
           <ImageSlider
             data={images}
             headerStyle={{ padding: 10, backgroundColor: "rgba(0,0,0, 0.6)" }}
-            onItemChanged={(item) => console.log("item", item)}
+            //onItemChanged={(item) => console.log("item", item)}
             onClick={(item, index) => {
               alert("hello" + index);
             }}
