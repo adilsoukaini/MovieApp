@@ -6,8 +6,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./src/Home";
 import Constant from "./src/Constant";
 import { FontAwesome } from "@expo/vector-icons";
-import MovieDetails from "./src/movieDetails";
-import movieDetails from "./src/movieDetails";
+import MovieDetails from "./Component/movieDetails";
+import movieDetails from "./Component/movieDetails";
+import { AntDesign } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +19,8 @@ function App() {
         <Stack.Screen name="Movie" component={Home} options={HeaderStyle} />
         <Stack.Screen
           name="movieDetails"
-          component={MovieDetails}
-          options={HeaderStyle}
+          component={movieDetails}
+          options={HeaderStyleForMovieDetails}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -41,5 +42,9 @@ const HeaderStyle = {
   headerRight: () => (
     <FontAwesome name="search" size={24} color={Constant.TextColor} />
   ),
+};
+const HeaderStyleForMovieDetails = {
+  title: "Movie",
+  headerShown: false,
 };
 export default App;
